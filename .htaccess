@@ -1,0 +1,12 @@
+# Redirecionamento em caso de erro
+ErrorDocument 404 /notfound.html
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+# RewriteRule ^(.*)$ $1.php
+# RewriteRule ^produto/(0-9]+)?$ produto.php?id=$1
+RewriteRule ^produto/([a-z,0-9,-]+)?$ produto.php?id=$1
+RewriteRule ^produto/([a-z,0-9,-]+)?/([a-z,0-9,-]+)?$ produto.php?categoria=$1&id=$2
+
+#deny from 127.0.0.1
